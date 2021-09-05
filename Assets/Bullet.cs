@@ -14,12 +14,12 @@ public class Bullet : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        //TODO: la speed deberían ser Serializadas
+        // TODO: speed should be Serialized
         transform.Translate(transform.forward * 10 * Time.deltaTime);
     }
 
     /// <summary>
-    /// Desactivamos la bala cuando OnCollisionEnter
+   /// We deactivate the bullet when OnCollisionEnter
     /// </summary>
     /// <param name="collision"></param>
     private void OnCollisionEnter(Collision collision)
@@ -31,15 +31,15 @@ public class Bullet : MonoBehaviour {
             h.TakeDamage(10, 100); //TODO: estas variables deberían ser Serializadas
         }
 
-        //Sin Pool
-        //La bala se destruye al colisionar con al
-        //Destroy(gameObject);
+        Without Pool
+         // The bullet is destroyed by colliding with the
+         // Destroy (gameObject);
 
-        //COn Pool, desactivamos el objeto y lo añadimos al pool, para poder ser reutilizado
+         // With Pool, we deactivate the object and add it to the pool, to be able to be reused
         DestroyMe();
     }
 
-    //Con Pool, desactivamos el objeto y lo añadimos al pool, para poder ser reutilizado
+    // With Pool, we deactivate the object and add it to the pool, to be able to be reused
     void DestroyMe()
     {
         gameObject.SetActive(false);
